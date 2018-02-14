@@ -1,0 +1,143 @@
+/*设置最外层的盒子和显示的页面一样大，和移动端的设置的尺寸一样大*/
+html,body {
+	height: 100%;
+}
+/*body {
+	overflow: hidden;
+}不加这一句还是可以整体移动*/
+body {
+	overflow: hidden;
+}
+.list_container {
+	height: 100%;
+}
+header{
+	width: 100%;
+	height: 45px;
+
+	/* 背景图片 */
+	background:url(images/header-bg.png);
+
+	background-size: 1px 44px;
+	background-repeat: repeat-x;
+
+	position: relative;
+	padding-left: 40px;
+	padding-right: 50px;
+	border-bottom: 1px solid #eee;
+	
+	z-index: 9;
+}
+header a:nth-child(1){
+	line-height: 45px;
+	color: gray;
+	font-size: 35px;
+	font-family: '宋体';
+	position: absolute;
+	left: 10px;
+}
+header input{
+	width: 100%;
+	height: 31px;
+	margin-top: 7px;
+	border-radius: 5px;
+	border: 1px solid #eee;
+}
+header a:nth-child(3){
+	background-image: url('images/sprites.png');
+	background-size: 200px 200px;
+	background-position: -60px 0;
+	width: 40px;
+	height: 44px;
+	position: absolute;
+	right: 10px;
+	top:0px ;
+
+	/* 将内容 压缩到 20*20 */
+	padding:12px 10px ;
+	
+	/* 设置 背景图 开始的位置 */
+	background-origin: content-box;
+	/* 设置背景图 保留的区域 */
+	background-clip:content-box; 
+}
+/*主要内容区域*/
+.main {
+	width: 100%;
+	height: 100%;
+}
+/*左边的区域*/
+.main_left {
+	width: 90px;
+	height: 100%;
+}
+.main_left ul {
+	width: 100%;
+}
+.main_left ul li {
+	width: 100%;
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid gray;
+	border-right: 1px solid gray;
+}
+
+.main_left ul li a {
+	color: black;
+	/*为了让a标签的点击范围够大，避免用户点空的情况，让a标签和li标签一样大*/
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.main_left ul li.current {
+	border-right: none;
+	
+}
+.main_left ul li.current a {
+	color: rgb(201,21,35);
+}
+/* 右边的区域 */
+/*注意此时不要给右边的盒子右浮动*/
+.main .main_right{
+	overflow: hidden;
+	/* 顶部 左右 底部为0 */
+	padding: 10px 10px 0; 
+}
+
+/* a标签 不要设置 宽度 自适应 */
+.main .main_right .right_banner{
+	display: block;
+	width: 100%;
+}
+.main .main_right .right_banner img{
+	display: block;
+	width: 100%;
+}
+.main .main_right h3{
+	margin-top: 10px;
+	font-size: 12px;
+}
+.main .main_right ul {
+	width: 100%;
+	padding-top: 10px;
+}
+.main .main_right ul li {
+	float: left;
+	width: 33.33333%;
+}
+.main .main_right ul li a{
+	display: block;
+	width: 100%;
+}
+.main .main_right ul li a img{
+	display: block;
+	width: 80%;
+	margin: 0 auto;
+}
+.main .main_right ul li a p{
+	text-align: center;
+	color: black;
+	padding: 4px 0;
+	font-size: 13px;
+}

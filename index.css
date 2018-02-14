@@ -1,0 +1,299 @@
+/*最外层容器*/
+.jd_container {
+	width: 100%;
+	min-height: 800px;
+	background: #eee;
+}
+.jd_header {
+	width: 100%;
+	height: 40px;
+	/*background-color: rgb(201,21,35);*/
+	padding-left: 70px;
+	padding-right: 70px;
+	/*要定位在顶部*/
+	position: fixed;
+	z-index: 10;
+	/*默认是透明的*/
+	/*用css改样式不是行内式即在控制台里面看不见*/
+	/*background-color: rgba(201,21,35,0);*/
+	/*用js改的话是行内式*/
+}
+.jd_header .header_logo {
+	width: 60px;
+	height: 36px;
+	position: absolute;
+	left: 5px;
+	top: 2px;
+	/*设置背景图片*/
+	background-image: url(images/sprites.png);
+	background-size: 200px 200px;
+	background-position: 0 -103px;
+	/*在原图上是206左右的位置*/
+	background-repeat: no-repeat;
+	
+}
+.jd_header .header_galss {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 10px;
+	left: 75px;
+	background: url(images/sprites.png) no-repeat;
+	background-position: -60px -108px;
+	background-size: 200px 200px;
+}
+.jd_header .header_search {
+	/*这个输入框看起来是左右两边间距一样的，本来想设置弹性布局，但是uc浏览器不支持弹性布局，我们可以这样设置 先把header_search的宽度设置为100%,然后设置jd_header的左右padding值，因为设置了盒子模型的border-box，所以可以给他挤到中间*/
+	width: 100%;
+	height: 30px;
+	margin-top: 5px;
+	border-radius: 15px;
+	padding-left: 25px;
+}
+.jd_header .header_login {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 14px;
+	color: #fff;
+}
+
+/*轮播图*/
+.jd_banner {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	/*为了让小圆球定位，子绝父相*/
+}
+.jd_banner .banner_images {
+	width: 1000%;
+	/*要横向放10张宽度为100%的图片*/
+	/*此时我们看到的其实是最后一张，作为无限轮播用的图，我们不想看到这张图所以我们先让他向左移动一张图的宽度*/
+	transform: translateX(-10%);
+}
+.jd_banner .banner_images li {
+	float:left;
+	/*父盒子ul的宽度为1000，li的宽度为100，相对于父盒子ul的宽度为10%*/
+	width: 10%;
+}
+.jd_banner .banner_images li a {
+	/*相对于父盒子li的宽度为100%*/
+	width: 100%;
+	display: block;
+}
+.jd_banner .banner_images li a img {
+	width: 100%;
+	display: block;
+	/*display: block;防止基线*/
+}
+/*轮播图的小圆球索引*/
+.banner_index{
+	/*如果这里不给定位的话，小圆球索引就会被挤下面去*/
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	margin-left: -57px;
+}
+.banner_index li {
+	float: left;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	border: 1px solid #FFFFFF;
+	margin-right: 5px;
+}
+/*如果li标签有.current class会有以下样式
+  注意：.current不能空格
+ * */
+.jd_banner .banner_index li.current {
+	background-color: black;
+}
+
+/*导航栏*/
+.jd_nav{
+	width: 100%;
+	border-bottom: 1px solid #ccc;
+	background: #fff;
+}
+.jd_nav ul {
+	/*把内容压下来*/
+	padding-top: 5px;
+	width: 100%;
+}
+.jd_nav ul li {
+	width: 25%;
+	float: left;
+	/*虽然有8个，一行排不下，但是他有浮动之后会自动换行*/
+}
+.jd_nav ul li a {
+	width: 60%;
+	display: block;
+	margin: 0 auto;
+}
+.jd_nav ul li a img {
+	width: 100%;
+	display: block;
+}
+.jd_nav ul li a p {
+	color: gray;
+	text-align: center;
+	padding: 5px 0;
+}
+
+/*设置京东首页主要内容的样式*/
+.jd_main {
+	width: 100%;
+	/*为了将内容挤到中间*/
+	padding:0 5px;
+	margin-top: 10px;
+}
+.jd_main .main_content {
+	width: 100%;
+	min-height: 150px;
+	background-color: #fff;
+	margin-bottom: 10px;
+	/*阴影:水平位移 垂直位移 模糊程度 阴影大小*/
+	box-shadow: 0 0 2px gray;
+}
+.jd_main .main_content .content_top {
+	min-height: 32px;
+	width: 100%;
+	border-bottom: 1px solid #eee;
+}
+.jd_main .main_content .content_bottom {
+	width: 100%;
+	/*就算不写width:100%宽度也可以继承*/
+}
+/*内容区域的第一个盒子*/
+.jd_main .main_content:nth-child(1) .content_top {
+	border-bottom: 0;
+}
+.jd_main .main_content:nth-child(1) .content_top span {
+	background: url(images/seckill-icon.png) no-repeat;
+	/*因为分辨率和屏幕像素的关系：需要将图片变成原来的一半大小*/
+	background-size:20px 25px;
+	width: 20px;
+	height: 25px;
+	float: left;
+	margin-left: 5px;
+	margin-top: 3.5px;
+}
+.jd_main .main_content:nth-child(1) .content_top p {
+	color: rgb(201,21,35);
+	/*如果p标签不设置浮动的话，就算设了margin-left也没用*/
+	margin-left: 5px;
+	float: left;
+	line-height: 32px;
+}
+.jd_main .main_content:nth-child(1) .content_top ul {
+	margin-left: 5px;
+	height: 32px;
+	padding-top: 8.5px;
+	/*如果这里给了一个margin-top那么下面的盒子会被挤开，因为我设置了box-sizing:border-box所以盒子大小是不会变得*/
+	/*如果要加margin-top那么只会把32px的盒子往下挤，而padding-top则是保证32px的盒子往里挤*/
+}
+.jd_main .main_content:nth-child(1) .content_top ul li {
+	float: left;
+	background-color: #000;
+	width: 15px;
+	height: 15px;
+	margin-left: 3px;
+	color: #fff;
+	text-align: center;
+	line-height: 15px;
+}
+.jd_main .main_content:nth-child(1) .content_top ul li:nth-child(3n) {
+	background-color: transparent;
+	color: gray;
+}
+.jd_main .main_content:nth-child(1) .content_top a {
+	color: gray;
+	line-height: 32px;
+	margin-right: 5px;
+}
+.jd_main .main_content:nth-child(1) .content_bottom {
+	width: 100%;
+}
+.jd_main .main_content:nth-child(1) .content_bottom ul {
+	width: 100%;
+}
+.jd_main .main_content:nth-child(1) .content_bottom ul li{
+	float: left;
+	/*为了保证零头不影响布局
+		假设给的33% 父盒子宽度是100px，那么差距就是1px
+		那么父盒子宽度是1000px，那么差距就是10px 
+	*/
+	width: 33.333333%;
+}
+/*li标签才是平级的*/
+.jd_main .main_content:nth-child(1) .content_bottom ul li:last-child a {
+	border: 0;
+}
+.jd_main .main_content:nth-child(1) .content_bottom ul li a{
+	display: block;
+	width: 100%;
+	/*a标签的高度会被图片撑开*/
+	border-right: 1px solid gray;
+}
+.jd_main .main_content:nth-child(1) .content_bottom ul li a img{
+	display: block;
+	/*防止基线的影响*/
+	/*宽度若为100%的话太大了，所以缩小为60%*/
+	width: 60%;
+	margin: 0 auto;
+}
+.jd_main .main_content:nth-child(1) .content_bottom ul li p {
+	font-size: 12px;
+	text-align: center;
+	padding: 3px 0;
+}
+/*由于a标签和p标签平级，所以这里写2 a标签是1*/
+.jd_main .main_content:nth-child(1) .content_bottom ul li p:nth-child(2) {
+	color: rgb(201,21,35);
+}
+.jd_main .main_content:nth-child(1) .content_bottom ul li p:nth-child(3) {
+	color: black;
+	text-decoration: line-through;
+}
+
+/*为除了第一个的主要区域盒子设置样式*/
+.jd_main .main_content:nth-child(n+2) .content_top{
+	
+}
+.jd_main .main_content:nth-child(n+2) .content_top span{
+	color: rgb(201,21,35);
+	line-height: 32px;
+	margin-left: 15px;
+	position: relative;
+}
+/*此时还需要一个红色小方块 用伪类做*/
+.jd_main .main_content:nth-child(n+2) .content_top span::before {
+	/*这句不能忘记*/
+	content: '';
+	position: absolute;
+	height: 15px;
+	width: 5px;
+	background-color: rgb(201,21,35);
+	top: 8.5px;
+	left: -10px;
+}
+
+/*设置除了秒杀区域的主要内容的底部*/
+.jd_main .main_content:nth-child(n+2) .content_bottom {
+	width: 100%;
+}
+.jd_main .main_content:nth-child(n+2) .content_bottom ul {
+	width: 100%;
+}
+.jd_main .main_content:nth-child(n+2) .content_bottom ul li {
+	/*注意这里宽度是50%*/
+	width: 50%;
+}
+.jd_main .main_content:nth-child(n+2) .content_bottom ul li a{
+	width: 100%;
+	display: block;
+}
+.jd_main .main_content:nth-child(n+2) .content_bottom ul li a img{
+	width: 100%;
+	display: block;
+}
